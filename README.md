@@ -1,29 +1,43 @@
-# Welcome to your Lovable project
+# PDF Header & Footer Replacer
 
-This project was built with [Lovable](https://lovable.dev).
+Upload any PDF and every page gets the fixed Winzou Health header and footer applied
+automatically — no settings, no cropping, no manual margins.
 
-## Build with Lovable
+## How it works
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+1. The file is validated (extension, MIME type, `%PDF-` magic bytes, 100 MB ceiling).
+2. Each page is rasterised at low resolution with pdf.js and reduced to a per-row ink
+   profile (`src/lib/pdf/analyze.ts`).
+3. The first content block at the top and at the bottom — up to 20% of page height and
+   only when a clean vertical gap separates it from the body — is treated as the existing
+   header/footer.
+4. pdf-lib covers those bands with white and draws the fixed brand images, scaled to page
+   width with their aspect ratio preserved, honouring page rotation.
+5. The result downloads as `<original>_processed.pdf`.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+All processing happens in the browser. No server upload, no storage, no database, no
+accounts, no cookies, no tracking. Nothing to delete afterwards because nothing is stored.
 
-## Development
+## Brand assets
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+`src/assets/header.jpg.asset.json` and `src/assets/footer.jpg.asset.json` point at the
+fixed header and footer images. Replace those pointers to change the branding.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+## Local development
+
+```bash
+bun install
+bun run dev
 ```
 
-## Built with
+Open http://localhost:8080.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Build
+
+```bash
+bun run build
+```
+
+The app is a TanStack Start (React + TypeScript + Vite) project and deploys through the
+Lovable publish flow; the PDF engine is entirely client-side, so any static-capable host
+works.

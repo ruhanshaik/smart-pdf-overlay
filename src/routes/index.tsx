@@ -71,7 +71,6 @@ function Index() {
         pages,
       });
     } catch (error) {
-      console.error(error);
       const message =
         error instanceof PdfValidationError || (error as Error)?.name === "PdfProcessingError"
           ? (error as Error).message
