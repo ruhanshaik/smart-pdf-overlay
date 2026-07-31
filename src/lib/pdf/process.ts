@@ -7,8 +7,8 @@
  */
 
 import { PDFDocument, rgb, degrees } from "pdf-lib";
-import * as pdfjs from "pdfjs-dist";
-import workerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
+import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
+import workerUrl from "pdfjs-dist/legacy/build/pdf.worker.min.mjs?url";
 import headerAsset from "@/assets/header.jpg.asset.json";
 import footerAsset from "@/assets/footer.jpg.asset.json";
 import { bandsFromProfile, inkProfile } from "./analyze";
@@ -50,7 +50,7 @@ async function analyzePages(
   bytes: Uint8Array,
   onProgress: (p: Progress) => void,
 ): Promise<Array<{ headerBand: number; footerBand: number }>> {
-  let doc: pdfjs.PDFDocumentProxy;
+  let doc: Awaited<ReturnType<typeof pdfjs.getDocument>["promise"]>;
   try {
     doc = await pdfjs.getDocument({ data: bytes.slice()}).promise;
   } catch (error) {
@@ -76,7 +76,7 @@ async function analyzePages(
     canvas.height = Math.max(1, Math.floor(viewport.height));
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    await page.render({ canvas, canvasContext: ctx, viewport }).promise;
+    await page.render({ canvasContext: ctx, viewport }).promise;
 
     const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const rows = inkProfile(image.data, canvas.width, canvas.height);
@@ -92,7 +92,7 @@ async function analyzePages(
     });
   }
 
-  await doc.cleanup();
+  await doc.destroy();
   return bands;
 }
 
