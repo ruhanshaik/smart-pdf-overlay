@@ -198,12 +198,16 @@ function Index() {
         ) : null}
       </section>
 
-     
+      <section className="mt-10">
+        <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+          Built By Ruhan
+        </h2>
+        
+      </section>
 
       <footer className="mt-10 text-center text-xs text-muted-foreground">
         Processed locally in your browser · no uploads, no storage, no tracking.
-        Built By Ruhan
       </footer>
     </main>
   );
-}
+} 
