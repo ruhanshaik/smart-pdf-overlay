@@ -8,17 +8,17 @@ import footerAsset from "@/assets/footer.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "PDF Header & Footer Replacer | Winzou Health" },
+      { title: "Winzou-Health" },
       {
         name: "description",
         content:
           "Upload any PDF and automatically replace its header and footer with the official Winzou Health branding. Runs entirely in your browser.",
       },
-      { property: "og:title", content: "PDF Header & Footer Replacer | Winzou Health" },
+      { property: "og:title", content: "Winzou-Health" },
       {
         property: "og:description",
         content:
-          "Automatic header and footer replacement for any PDF — private, instant, no upload to a server.",
+          "Upload any PDF and automatically replace its header and footer with the official Winzou Health branding. Runs entirely in your browser.",
       },
     ],
   }),
