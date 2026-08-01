@@ -9,8 +9,8 @@
 import { PDFDocument, rgb, degrees } from "pdf-lib";
 import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
 import workerUrl from "pdfjs-dist/legacy/build/pdf.worker.min.mjs?url";
-import headerAsset from "@/assets/header.jpg.asset.json";
-import footerAsset from "@/assets/footer.jpg.asset.json";
+import headerUrl from "@/assets/header.jpg";
+import footerUrl from "@/assets/footer.jpg";
 import { bandsFromProfile, inkProfile } from "./analyze";
 import type { Progress } from "./types";
 
@@ -32,10 +32,7 @@ let brandCache: Promise<BrandImages> | null = null;
 
 async function loadBrandImages(): Promise<BrandImages> {
   brandCache ??= (async () => {
-    const [header, footer] = await Promise.all([
-      fetch(headerAsset.url),
-      fetch(footerAsset.url),
-    ]);
+    const [header, footer] = await Promise.all([fetch(headerUrl), fetch(footerUrl)]);
     if (!header.ok) throw new PdfProcessingError("The header image could not be loaded.");
     if (!footer.ok) throw new PdfProcessingError("The footer image could not be loaded.");
     return {
