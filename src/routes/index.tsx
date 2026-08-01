@@ -2,8 +2,6 @@ import { useCallback, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import type { Progress } from "@/lib/pdf/types";
 import { PdfValidationError, sanitizeFilename, validatePdf } from "@/lib/pdf/validate";
-import headerUrl from "@/assets/header.jpg";
-import footerUrl from "@/assets/footer.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
