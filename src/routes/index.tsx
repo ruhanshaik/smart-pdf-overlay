@@ -2,8 +2,6 @@ import { useCallback, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import type { Progress } from "@/lib/pdf/types";
 import { PdfValidationError, sanitizeFilename, validatePdf } from "@/lib/pdf/validate";
-import headerUrl from "@/assets/header.jpg";
-import footerUrl from "@/assets/footer.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -198,34 +196,19 @@ function Index() {
         ) : null}
       </section>
 
-      <section className="mt-10">
-        <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
-          Branding applied to every page
-        </h2>
-        <div className="surface-card mt-4 space-y-4 rounded-2xl p-4">
-          <figure>
-            <figcaption className="mb-2 text-xs font-medium text-muted-foreground">Header</figcaption>
-            <img
-              src={headerUrl}
-              alt="Winzou Health header with logo and contact details"
-              className="w-full rounded-lg border border-border bg-card"
-              loading="lazy"
-            />
-          </figure>
-          <figure>
-            <figcaption className="mb-2 text-xs font-medium text-muted-foreground">Footer</figcaption>
-            <img
-              src={footerUrl}
-              alt="Winzou Health footer with clinic address"
-              className="w-full rounded-lg border border-border bg-card"
-              loading="lazy"
-            />
-          </figure>
-        </div>
-      </section>
-
       <footer className="mt-10 text-center text-xs text-muted-foreground">
-        Processed locally in your browser · no uploads, no storage, no tracking.
+        <p>Processed locally in your browser · no uploads, no storage, no tracking.</p>
+        <p className="mt-1">
+          Built with <span aria-label="love">❤️</span> by{" "}
+          <a
+            href="https://gmitech.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium underline-offset-4 hover:underline"
+          >
+            gmitech.in
+          </a>
+        </p>
       </footer>
     </main>
   );
