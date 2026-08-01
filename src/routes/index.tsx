@@ -206,7 +206,7 @@ function Index() {
           <figure>
             <figcaption className="mb-2 text-xs font-medium text-muted-foreground">Header</figcaption>
             <img
-              src={headerAsset.url}
+              src={headerUrl}
               alt="Winzou Health header with logo and contact details"
               className="w-full rounded-lg border border-border bg-card"
               loading="lazy"
@@ -215,7 +215,7 @@ function Index() {
           <figure>
             <figcaption className="mb-2 text-xs font-medium text-muted-foreground">Footer</figcaption>
             <img
-              src={footerAsset.url}
+              src={footerUrl}
               alt="Winzou Health footer with clinic address"
               className="w-full rounded-lg border border-border bg-card"
               loading="lazy"
