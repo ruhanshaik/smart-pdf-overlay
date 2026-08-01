@@ -198,34 +198,11 @@ function Index() {
         ) : null}
       </section>
 
-      <section className="mt-10">
-        <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
-          Branding applied to every page
-        </h2>
-        <div className="surface-card mt-4 space-y-4 rounded-2xl p-4">
-          <figure>
-            <figcaption className="mb-2 text-xs font-medium text-muted-foreground">Header</figcaption>
-            <img
-              src={headerAsset.url}
-              alt="Winzou Health header with logo and contact details"
-              className="w-full rounded-lg border border-border bg-card"
-              loading="lazy"
-            />
-          </figure>
-          <figure>
-            <figcaption className="mb-2 text-xs font-medium text-muted-foreground">Footer</figcaption>
-            <img
-              src={footerAsset.url}
-              alt="Winzou Health footer with clinic address"
-              className="w-full rounded-lg border border-border bg-card"
-              loading="lazy"
-            />
-          </figure>
-        </div>
-      </section>
+     
 
       <footer className="mt-10 text-center text-xs text-muted-foreground">
         Processed locally in your browser · no uploads, no storage, no tracking.
+        Built By Ruhan
       </footer>
     </main>
   );
