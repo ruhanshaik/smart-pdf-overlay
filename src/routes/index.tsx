@@ -85,10 +85,7 @@ function Index() {
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col px-5 py-10 sm:px-8 sm:py-16">
       <header className="text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold tracking-wide text-muted-foreground uppercase">
-          Winzou Health · Document Branding
-        </span>
-        <h1 className="mt-5 text-3xl leading-tight font-bold text-balance sm:text-5xl">
+        <h1 className="text-3xl leading-tight font-bold text-balance sm:text-5xl">
           Replace any PDF&apos;s <span className="text-brand-gradient">header &amp; footer</span>{" "}
           automatically
         </h1>
